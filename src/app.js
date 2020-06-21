@@ -4,6 +4,7 @@ const hbs = require("hbs");
 const geoCode = require("./utils/geocode");
 const forecast = require("./utils/forecast");
 const app = express();
+const port = process.env.PORT || 3000;
 
 //Define paths for express configurations
 const publicDirPath = path.join(__dirname, "../public");
@@ -47,13 +48,6 @@ app.get("/weather", (req, res) => {
       });
     });
   });
-
-  //   res.send({
-  //     address: req.query.address,
-  //     placeName: "Kochi",
-  //     tempareture: "29",
-  //     feelslike: "32",
-  //   });
 });
 
 app.get("/about", (req, res) => {
@@ -88,6 +82,6 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("Server is up on port 3000");
+app.listen(port, () => {
+  console.log("Server is up on port " + port);
 });
